@@ -1,0 +1,84 @@
+:root {
+  --font-sans:
+    "Geist Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-sans);
+
+  --font-size-display-m: 1.5rem;
+  --font-size-display-s: 1.25rem;
+  --font-size-display-xs: 1.125rem;
+  --font-size-text-l: 1rem;
+  --font-size-text-m: 0.875rem;
+  --font-size-text-s: 0.75rem;
+  --primary-50: oklch(0.966 0.021 264.53);
+  --primary-100: oklch(0.929 0.045 264.44);
+  --primary-200: oklch(0.858 0.088 264.35);
+  --primary-300: oklch(0.771 0.144 264.13);
+  --primary-400: oklch(0.669 0.207 264.33);
+  --primary-500: oklch(0.559 0.258 265.41);
+  --primary-600: oklch(0.443 0.222 267.4);
+  --primary-700: oklch(0.316 0.178 269.45);
+  --primary-800: oklch(0.204 0.126 272.76);
+  --primary-900: oklch(0.126 0.081 276.08);
+
+  --green-50: oklch(0.973 0.022 147.4);
+  --green-100: oklch(0.942 0.048 147.38);
+  --green-200: oklch(0.871 0.093 147.3);
+  --green-300: oklch(0.793 0.149 147.16);
+  --green-400: oklch(0.71 0.201 146.99);
+  --green-500: oklch(0.613 0.245 146.47);
+  --green-600: oklch(0.485 0.198 147.29);
+  --green-700: oklch(0.347 0.146 148.21);
+  --green-800: oklch(0.224 0.096 149.88);
+  --green-900: oklch(0.137 0.063 151.81);
+
+  --yellow-50: oklch(0.978 0.023 79.52);
+  --yellow-100: oklch(0.953 0.051 79.2);
+  --yellow-200: oklch(0.895 0.1 78.43);
+  --yellow-300: oklch(0.825 0.158 77.34);
+  --yellow-400: oklch(0.748 0.209 75.12);
+  --yellow-500: oklch(0.662 0.246 70.83);
+  --yellow-600: oklch(0.525 0.199 71.04);
+  --yellow-700: oklch(0.377 0.146 71.4);
+  --yellow-800: oklch(0.244 0.097 71.84);
+  --yellow-900: oklch(0.147 0.061 72.48);
+
+  --red-50: oklch(0.975 0.017 21.65);
+  --red-100: oklch(0.947 0.038 21.28);
+  --red-200: oklch(0.884 0.081 21.41);
+  --red-300: oklch(0.808 0.133 21.06);
+  --red-400: oklch(0.722 0.183 21.1);
+  --red-500: oklch(0.627 0.222 21.57);
+  --red-600: oklch(0.495 0.181 22.06);
+  --red-700: oklch(0.354 0.133 22.75);
+  --red-800: oklch(0.231 0.089 23.95);
+  --red-900: oklch(0.141 0.057 25.49);
+
+  --blue-50: oklch(0.973 0.017 222.1);
+  --blue-100: oklch(0.939 0.041 221.75);
+  --blue-200: oklch(0.865 0.088 221.32);
+  --blue-300: oklch(0.781 0.141 221.14);
+  --blue-400: oklch(0.706 0.181 222.95);
+  --blue-500: oklch(0.621 0.217 226.79);
+  --blue-600: oklch(0.495 0.155 229.07);
+  --blue-700: oklch(0.356 0.106 231.57);
+  --blue-800: oklch(0.232 0.066 235.15);
+  --blue-900: oklch(0.141 0.038 239.52);
+
+  --neutral-500: oklch(0.505 0.059 261.32);
+  --neutral-600: oklch(0.373 0.046 261.85);
+  --neutral-700: oklch(0.323 0.033 265.43);
+  --neutral-800: oklch(0.211 0.021 273.7);
+  --neutral-900: oklch(0.129 0.016 280.95);
+
+  --gray-25: oklch(0.982 0.003 264.4);
+  --gray-50: oklch(0.953 0.003 264.1);
+  --gray-100: oklch(0.916 0.005 264.5);
+  --gray-200: oklch(0.825 0.011 264.3);
+  --gray-300: oklch(0.729 0.016 264.2);
+  --gray-400: oklch(0.613 0.024 264.4);
+
+  --white: oklch(1 0 0);
+
+  --radius: 0.625rem;
+}
