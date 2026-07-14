@@ -5,7 +5,7 @@ import AuthFooter from "../components/AuthFooter";
 import AuthHeader from "../components/AuthHeader";
 export const LoginPage = () => {
   return (
-    <section className="flex  flex-col items-center justify-center min-h-screen bg-white">
+    <section className="flex  flex-col px-4 py-6 items-center justify-center min-h-screen bg-white">
       <AuthHeader title="Sign in to your account" />
       <form className="flex flex-col gap-6 w-full max-w-sm">
         <CustomInput id="E-mail" label="E-mail" placeholder="E-mail" />
@@ -19,12 +19,12 @@ export const LoginPage = () => {
         <Button variant="primary" type="button">
           Sign in
         </Button>
-        <AuthFooter
-          link="/sign-up"
-          linkText="Sign up"
-          title="Don’t have an account?"
-        />
       </form>
+      <AuthFooter
+        link="/register"
+        linkText="Sign up"
+        title="Don’t have an account?"
+      />
     </section>
   );
 };

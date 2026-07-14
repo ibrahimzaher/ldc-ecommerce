@@ -10,7 +10,7 @@ export default function AuthFooter({
   linkText: string;
 }) {
   return (
-    <footer className="text-sm font-medium text-center text-gray-800">
+    <footer className="text-sm mt-6 font-medium text-center text-gray-800">
       {title}
       <Link to={link} className="text-primary font-medium hover:underline ms-2">
         {linkText}
