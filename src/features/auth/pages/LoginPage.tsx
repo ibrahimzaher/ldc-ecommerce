@@ -1,11 +1,11 @@
-import CustomCheckbox from "@/components/CustomCheckbox";
-import CustomInput from "@/components/CustomInput";
-import { Button } from "@/components/ui/button";
-import { LoginValidationSchema } from "@/utils/validation";
+import CustomCheckbox from "@/shared/components/CustomCheckbox";
+import CustomInput from "@/shared/components/CustomInput";
+import { Button } from "@/shared/components/ui/button";
+import { LoginValidationSchema } from "@/shared/utils/validation";
 import { useFormik } from "formik";
 import { Loader2 } from "lucide-react";
-import AuthFooter from "../components/AuthFooter";
-import AuthHeader from "../components/AuthHeader";
+import AuthFooter from "../layouts/AuthFooter";
+import AuthHeader from "../layouts/AuthHeader";
 import { useAuth } from "../hooks/useAuth";
 import type { LoginRequest } from "../types/authRequest";
 export const LoginPage = () => {

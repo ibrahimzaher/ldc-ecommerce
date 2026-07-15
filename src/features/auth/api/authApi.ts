@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/config/axiosInstance";
+import { axiosInstance } from "@/core/config/axiosInstance";
 import type {
   LoginRequest,
   RegisterRequest,

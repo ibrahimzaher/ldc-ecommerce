@@ -1,16 +1,17 @@
-import CustomCheckbox from "@/components/CustomCheckbox";
-import CustomInput from "@/components/CustomInput";
-import { Button } from "@/components/ui/button";
+import CustomCheckbox from "@/shared/components/CustomCheckbox";
+import CustomInput from "@/shared/components/CustomInput";
+import { Button } from "@/shared/components/ui/button";
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/components/ui/native-select";
-import { RegisterValidationSchema } from "@/utils/validation";
+} from "@/shared/components/ui/native-select";
+import { RegisterValidationSchema } from "@/shared/utils/validation";
 import { useFormik } from "formik";
-import AuthFooter from "../components/AuthFooter";
-import AuthHeader from "../components/AuthHeader";
+import AuthFooter from "../layouts/AuthFooter";
+import AuthHeader from "../layouts/AuthHeader";
 import { useAuth } from "../hooks/useAuth";
 import type { RegisterRequest } from "../types/authRequest";
+import { Loader2 } from "lucide-react";
 
 export default function RegisterPage() {
   const handleSubmit = (values: RegisterRequest) => {
@@ -111,7 +112,8 @@ export default function RegisterPage() {
           type="submit"
           disabled={mutateRegister.isPending}
         >
-          Sign up
+          Sign up{" "}
+          {mutateRegister.isPending && <Loader2 className="animate-spin" />}
         </Button>
       </form>
       <AuthFooter
