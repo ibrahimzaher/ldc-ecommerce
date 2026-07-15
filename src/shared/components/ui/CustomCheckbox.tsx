@@ -1,5 +1,5 @@
 import { cn } from "@/shared/lib/utils";
-import { Checkbox } from "./ui/checkbox";
+import { Checkbox } from "@/shared/components/ui/checkbox";
 interface CustomCheckboxProps extends React.ComponentPropsWithoutRef<
   typeof Checkbox
 > {
