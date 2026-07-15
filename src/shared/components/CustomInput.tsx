@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { Input } from "./ui/input";
 interface CustomInputProps extends React.ComponentProps<"input"> {
   label: string;

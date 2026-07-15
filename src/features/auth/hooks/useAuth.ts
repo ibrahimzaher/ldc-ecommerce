@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import type { AxiosError } from "axios";
 import { authApi } from "../api/authApi";
-import { useAppDispatch } from "@/store/store";
-import { setUser } from "@/store/authSlice";
+import { useAppDispatch } from "@/core/store/store";
+import { setUser } from "@/core/store/authSlice";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
