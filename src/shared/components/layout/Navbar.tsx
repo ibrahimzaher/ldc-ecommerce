@@ -10,7 +10,7 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <nav
       className={cn(
-        "bg-white border-gray-200 mb-5 border-b px-4 py-2.5 rounded dark:bg-gray-900",
+        "bg-white border-gray-200   border-b px-4 py-5 rounded dark:bg-gray-900",
         className,
       )}
     >
