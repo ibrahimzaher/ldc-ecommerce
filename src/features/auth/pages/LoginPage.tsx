@@ -1,5 +1,5 @@
-import CustomCheckbox from "@/shared/components/CustomCheckbox";
-import CustomInput from "@/shared/components/CustomInput";
+import CustomCheckbox from "@/shared/components/ui/CustomCheckbox";
+import CustomInput from "@/shared/components/ui/CustomInput";
 import { Button } from "@/shared/components/ui/button";
 import { LoginValidationSchema } from "@/shared/utils/validation";
 import { useFormik } from "formik";
