@@ -1,9 +1,7 @@
 import { useAppSelector } from "@/core/store/store";
 import { useMemo, useState } from "react";
-import { ProductCard } from "@/shared/components/ui/ProductCard";
-import { useGetProducts } from "../hooks/useProducts";
-import { ProductPagination } from "@/features/products/components/ui/PaginatorProduct";
-import { ProductFilters } from "../components/ui/FilterProducts";
+import { ProductCard } from "@/features/ecommerce/components/ProductCard";
+import { ProductPagination } from "@/features/ecommerce/pages/ProductList/components/PaginatorProduct";
 import {
   Sheet,
   SheetContent,
@@ -12,6 +10,8 @@ import {
   SheetTrigger,
 } from "@/shared/components/ui/sheet";
 import { SlidersHorizontal } from "lucide-react";
+import { useGetProducts } from "../../hooks/useProducts";
+import { ProductFilters } from "./components/FilterProducts";
 
 export default function ProductListPage() {
   const user = useAppSelector((state) => state.auth.user);

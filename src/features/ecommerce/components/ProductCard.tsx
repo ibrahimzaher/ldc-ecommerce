@@ -1,5 +1,5 @@
 import placeholderImage from "@/assets/images/placeholder.png";
-import type { Product } from "@/features/products/types/product.types";
+import type { Product } from "@/features/ecommerce/types/product.types";
 import { Star, StarHalf } from "lucide-react";
 const renderStars = (rating = 4.5) => {
   const totalStars = 5;

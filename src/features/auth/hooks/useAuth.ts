@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import type { AxiosError } from "axios";
 import { authApi } from "../api/authApi";
 import { useAppDispatch } from "@/core/store/store";
-import { setUser } from "@/core/store/authSlice";
+import { setUser } from "@/features/auth/store/authSlice";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 

@@ -1,12 +1,12 @@
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import DashboardPage from "@/features/dashboard/pages/DashboardPage";
-import ProductListPage from "@/features/products/pages/ProductListPage";
-import DashboardLayout from "@/shared/components/layout/DashboardLayout";
-import MainLayout from "@/shared/components/layout/MainLayout";
-import ProtectedRoute from "@/shared/components/ProtectedRoute";
-import PublicRoute from "@/shared/components/PublicRoute";
+import DashboardLayout from "@/features/dashboard/layouts/DashboardLayout";
+import MainLayout from "@/features/ecommerce/layouts/MainLayout";
+import ProtectedRoute from "@/core/guards/ProtectedRoute";
+import PublicRoute from "@/core/guards/PublicRoute";
 import { Navigate, Route, Routes } from "react-router-dom";
+import ProductListPage from "@/features/ecommerce/pages/ProductList/ProductListPage";
 export default function AppRoutes() {
   return (
     <Routes>
