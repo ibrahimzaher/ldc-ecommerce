@@ -17,7 +17,7 @@ export const productsApi = {
     return response.data;
   },
   getProductById: async (
-    id: string,
+    id: string | undefined,
   ): Promise<{ data: Product; statusCode: number; message: string }> => {
     const response = await axiosInstance.get(`/Product/getproductbyid/${id}`);
     return response.data;
