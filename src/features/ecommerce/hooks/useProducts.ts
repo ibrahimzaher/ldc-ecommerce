@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { productsApi } from "../api/productsApi";
 
-// Hook مخصص لجلب كل المنتجات بناءً على الـ customerId والصفحة
 export const useGetProducts = (id: string, pageNumber = 1, pageSize = 9) => {
   return useQuery({
     queryKey: ["products", id, pageNumber, pageSize],
@@ -12,10 +11,10 @@ export const useGetProducts = (id: string, pageNumber = 1, pageSize = 9) => {
   });
 };
 
-export const useGetProductById = (id: string) => {
+export const useGetProductById = (id: string | undefined) => {
   return useQuery({
     queryKey: ["productById", id],
-    queryFn: () => productsApi.getProductById(id),
+    queryFn: () => productsApi.getProductById(id!),
     enabled: !!id,
   });
 };

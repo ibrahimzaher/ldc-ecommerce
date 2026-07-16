@@ -12,6 +12,7 @@ import {
 import { SlidersHorizontal } from "lucide-react";
 import { useGetProducts } from "../../hooks/useProducts";
 import { ProductFilters } from "./components/FilterProducts";
+import { useNavigate } from "react-router";
 
 export default function ProductListPage() {
   const user = useAppSelector((state) => state.auth.user);
@@ -26,6 +27,7 @@ export default function ProductListPage() {
     pageSize,
   );
   const products = useMemo(() => data?.data?.items || [], [data]);
+  const navigate = useNavigate();
   const filteredProducts = useMemo(() => {
     if (!priceFilter) return products;
     return products.filter(
@@ -103,7 +105,13 @@ export default function ProductListPage() {
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8">
                 {filteredProducts.map((product) => {
-                  return <ProductCard key={product.id} product={product} />;
+                  return (
+                    <ProductCard
+                      onClick={() => navigate(`/products/${product.id}`)}
+                      key={product.id}
+                      product={product}
+                    />
+                  );
                 })}
               </div>
             ) : (
