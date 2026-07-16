@@ -7,6 +7,7 @@ import ProtectedRoute from "@/core/guards/ProtectedRoute";
 import PublicRoute from "@/core/guards/PublicRoute";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProductListPage from "@/features/ecommerce/pages/ProductList/ProductListPage";
+import ProductDetailsPage from "@/features/ecommerce/pages/ProductDetails/ProductDetailsPage";
 export default function AppRoutes() {
   return (
     <Routes>
@@ -17,6 +18,7 @@ export default function AppRoutes() {
       <Route element={<ProtectedRoute allowedRoles="user" />}>
         <Route element={<MainLayout />}>
           <Route path="/products" element={<ProductListPage />} />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/" element={<Navigate to="/products" replace />} />
         </Route>
       </Route>
