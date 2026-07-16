@@ -35,7 +35,7 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
           const isActive = index === activeImageIndex;
           return (
             <button
-              key={image.productImageId}
+              key={index}
               onClick={() => setActiveImageIndex(index)}
               className={`
                 bg-[#F0EEED] rounded-[20px] aspect-square overflow-hidden flex items-center justify-center p-2 
