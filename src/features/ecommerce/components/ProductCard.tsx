@@ -45,13 +45,20 @@ const renderStars = (rating = 4.5) => {
   );
 };
 
-export const ProductCard = ({ product }: { product: Product }) => {
+export const ProductCard = ({
+  product,
+  onClick,
+}: {
+  product: Product;
+  onClick?: () => void;
+}) => {
   const imageUrl =
     product.productImages && product.productImages.length > 0
       ? product.productImages[0].url
       : placeholderImage;
   return (
     <div
+      onClick={onClick}
       key={product.id}
       className="group cursor-pointer flex flex-col items-start"
     >
