@@ -8,6 +8,7 @@ import PublicRoute from "@/core/guards/PublicRoute";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProductListPage from "@/features/ecommerce/pages/ProductList/ProductListPage";
 import ProductDetailsPage from "@/features/ecommerce/pages/ProductDetails/ProductDetailsPage";
+import { CartPage } from "@/features/ecommerce/pages/Cart/CartPage";
 export default function AppRoutes() {
   return (
     <Routes>
@@ -19,6 +20,7 @@ export default function AppRoutes() {
         <Route element={<MainLayout />}>
           <Route path="/products" element={<ProductListPage />} />
           <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/" element={<Navigate to="/products" replace />} />
         </Route>
       </Route>
