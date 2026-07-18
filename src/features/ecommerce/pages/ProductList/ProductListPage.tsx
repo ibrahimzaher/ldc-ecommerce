@@ -1,7 +1,6 @@
 import { useAppSelector } from "@/core/store/store";
 import { useMemo, useState } from "react";
 import { ProductCard } from "@/features/ecommerce/components/ProductCard";
-import { ProductPagination } from "@/features/ecommerce/pages/ProductList/components/PaginatorProduct";
 import {
   Sheet,
   SheetContent,
@@ -13,6 +12,7 @@ import { SlidersHorizontal } from "lucide-react";
 import { useGetProducts } from "../../hooks/useProducts";
 import { ProductFilters } from "./components/FilterProducts";
 import { useNavigate } from "react-router";
+import { CustomPagination } from "@/shared/components/ui/CustomPagination";
 
 export default function ProductListPage() {
   const user = useAppSelector((state) => state.auth.user);
@@ -122,7 +122,7 @@ export default function ProductListPage() {
           </div>
 
           {totalPages > 1 && (
-            <ProductPagination
+            <CustomPagination
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={(newPage) => {
