@@ -6,12 +6,15 @@ import { renderStars } from "../../components/RenderStars";
 import { useGetProductById } from "../../hooks/useProducts";
 import { ProductImageGallery } from "./components/ProductImageGallery";
 import ProductMayLike from "./components/ProductMayLike";
+import { useAppDispatch } from "@/core/store/store";
+import { addToCart } from "../../store/cartSlice";
 
 export default function ProductDetailsPage() {
   const { id } = useParams<{ id: string | undefined }>();
   const { data, isLoading, error } = useGetProductById(id);
   const product = useMemo(() => data?.data || null, [data]);
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useAppDispatch();
 
   if (isLoading) {
     return (
@@ -87,7 +90,13 @@ export default function ProductDetailsPage() {
                 </button>
               </div>
 
-              <Button variant="primary" className="flex-1 rounded-full">
+              <Button
+                variant="primary"
+                className="flex-1 rounded-full"
+                onClick={() => {
+                  dispatch(addToCart({ product, quantity }));
+                }}
+              >
                 Add to Cart
               </Button>
             </div>
