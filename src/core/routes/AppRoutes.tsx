@@ -9,6 +9,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import ProductListPage from "@/features/ecommerce/pages/ProductList/ProductListPage";
 import ProductDetailsPage from "@/features/ecommerce/pages/ProductDetails/ProductDetailsPage";
 import { CartPage } from "@/features/ecommerce/pages/Cart/CartPage";
+import { OrdersPage } from "@/features/ecommerce/pages/Orders/OrdersPage";
 export default function AppRoutes() {
   return (
     <Routes>
@@ -21,6 +22,7 @@ export default function AppRoutes() {
           <Route path="/products" element={<ProductListPage />} />
           <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/orders" element={<OrdersPage />} />
           <Route path="/" element={<Navigate to="/products" replace />} />
         </Route>
       </Route>

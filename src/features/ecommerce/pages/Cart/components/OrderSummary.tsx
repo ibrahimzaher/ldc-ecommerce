@@ -1,11 +1,12 @@
 import { Button } from "@/shared/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 
 interface OrderSummaryProps {
   subtotal: number;
   taxAmount: number;
   total: number;
   isDisableCheckout: boolean;
+  loading?: boolean;
   onCheckoutClick?: () => void;
 }
 
@@ -13,6 +14,7 @@ export const OrderSummary = ({
   subtotal,
   taxAmount,
   total,
+  loading,
   isDisableCheckout,
   onCheckoutClick,
 }: OrderSummaryProps) => {
@@ -49,10 +51,11 @@ export const OrderSummary = ({
       <Button
         variant="primary"
         className="w-full mt-5 rounded-full py-4"
-        disabled={isDisableCheckout}
+        disabled={isDisableCheckout || loading}
         onClick={onCheckoutClick}
       >
         Go to Checkout <ArrowRight />
+        {loading && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
       </Button>
     </div>
   );
