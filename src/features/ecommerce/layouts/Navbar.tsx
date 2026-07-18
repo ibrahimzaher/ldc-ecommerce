@@ -2,11 +2,17 @@ import { useState } from "react";
 import logo from "@/assets/images/logo.png";
 import CustomInput from "@/shared/components/ui/CustomInput";
 import { Search, ShoppingCart, Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cn } from "@/shared/lib/utils";
+import { useAppSelector } from "@/core/store/store";
+import { Button } from "@/shared/components/ui/button";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 export default function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const { logout } = useAuth();
   return (
     <nav
       className={cn(
@@ -39,9 +45,20 @@ export default function Navbar({ className }: { className?: string }) {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
         </div>
 
-        <button className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
-          <ShoppingCart className="h-6 w-6" />
-        </button>
+        <div className="flex gap-4">
+          <button
+            onClick={() => navigate("/cart")}
+            className="p-2 cursor-pointer relative text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+          >
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {cartItems.length}
+            </span>
+            <ShoppingCart className="h-6 w-6" />
+          </button>
+          <Button variant="primary" className="py-2" onClick={logout}>
+            Log Out
+          </Button>
+        </div>
       </div>
 
       {isMenuOpen && (

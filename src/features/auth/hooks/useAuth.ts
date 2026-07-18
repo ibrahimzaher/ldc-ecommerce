@@ -5,6 +5,7 @@ import { useAppDispatch } from "@/core/store/store";
 import { setUser } from "@/features/auth/store/authSlice";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { clearCart } from "@/features/ecommerce/store/cartSlice";
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();
@@ -53,5 +54,11 @@ export const useAuth = () => {
       );
     },
   });
-  return { mutateLogin, mutateRegister };
+  const logout = () => {
+    dispatch(setUser(null));
+    dispatch(clearCart());
+    toast.success("Logout successful", { duration: 1500 });
+    navigate("/login");
+  };
+  return { mutateLogin, mutateRegister, logout };
 };
