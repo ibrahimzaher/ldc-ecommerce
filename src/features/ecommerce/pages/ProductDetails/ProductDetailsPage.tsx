@@ -1,37 +1,26 @@
+import { useAppDispatch } from "@/core/store/store";
 import { Button } from "@/shared/components/ui/button";
 import { Minus, Plus } from "lucide-react";
-import { useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { renderStars } from "../../components/RenderStars";
-import { useGetProductById } from "../../hooks/useProducts";
+import { addToCart } from "../../store/cartSlice";
+import type { Product } from "../../types/product.types";
 import { ProductImageGallery } from "./components/ProductImageGallery";
 import ProductMayLike from "./components/ProductMayLike";
-import { useAppDispatch } from "@/core/store/store";
-import { addToCart } from "../../store/cartSlice";
 
 export default function ProductDetailsPage() {
-  const { id } = useParams<{ id: string | undefined }>();
-  const { data, isLoading, error } = useGetProductById(id);
-  const product = useMemo(() => data?.data || null, [data]);
+  const product = useLoaderData() as Product;
   const [quantity, setQuantity] = useState(1);
   const dispatch = useAppDispatch();
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center py-40">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>
-      </div>
-    );
-  }
-
-  if (error || !product) {
+  if (!product) {
     return (
       <div className="flex items-center justify-center py-20 text-red-500 font-medium">
-        Error loading product details. Please try again later.
+        Product not found. Please check the product ID or try again later.
       </div>
     );
   }
-
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8  lg:gap-10 items-start">

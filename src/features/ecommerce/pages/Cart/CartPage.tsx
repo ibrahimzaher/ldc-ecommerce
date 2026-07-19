@@ -1,10 +1,12 @@
 import { useAppSelector } from "@/core/store/store";
 import { CartItem } from "./components/CartItem";
 import { OrderSummary } from "./components/OrderSummary";
+import { useAddOrder } from "../../hooks/useOrders";
 
 export const CartPage = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
-
+  const customerId = useAppSelector((state) => state.auth.user?.id || "");
+  const { mutate, isPending } = useAddOrder();
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.product.amount * item.quantity,
     0,
@@ -14,7 +16,13 @@ export const CartPage = () => {
   const total = subtotal + taxAmount;
 
   const handleCheckout = () => {
-    console.log("Proceeding to checkout...");
+    mutate({
+      customerId,
+      orderItems: cartItems.map((item) => ({
+        productId: item.product.id,
+        quantity: item.quantity,
+      })),
+    });
   };
 
   return (
@@ -45,6 +53,7 @@ export const CartPage = () => {
           subtotal={subtotal}
           taxAmount={taxAmount}
           total={total}
+          loading={isPending}
           isDisableCheckout={cartItems.length === 0}
           onCheckoutClick={handleCheckout}
         />
