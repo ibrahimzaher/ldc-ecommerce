@@ -9,18 +9,25 @@ import {
 } from "@/shared/components/ui/breadcrumb";
 import React from "react";
 
-export default function DynamicBreadcrumb() {
+export default function DynamicBreadcrumb({
+  className,
+}: {
+  className?: string;
+}) {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
 
   if (pathnames.length === 0) return null;
 
   return (
-    <Breadcrumb className="mb-6">
+    <Breadcrumb className={`mb-6`}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link to="/" className="text-gray-500 hover:text-black transition">
+            <Link
+              to="/"
+              className={` text-gray-800 font-medium hover:text-black transition ${className || ""}`}
+            >
               Home
             </Link>
           </BreadcrumbLink>
@@ -36,14 +43,14 @@ export default function DynamicBreadcrumb() {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 {isLast ? (
-                  <BreadcrumbPage className="font-medium text-black capitalize">
+                  <BreadcrumbPage className="font-medium text-gray-500 capitalize">
                     {formattedName}
                   </BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
                     <Link
                       to={to}
-                      className="text-gray-500 hover:text-black transition capitalize"
+                      className={`text-gray-800 font-medium hover:text-black transition capitalize  ${className || ""}`}
                     >
                       {formattedName}
                     </Link>

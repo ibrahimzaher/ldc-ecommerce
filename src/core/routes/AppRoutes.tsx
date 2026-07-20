@@ -3,7 +3,7 @@ import PublicRoute from "@/core/guards/PublicRoute";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import DashboardLayout from "@/features/dashboard/layouts/DashboardLayout";
-import DashboardPage from "@/features/dashboard/pages/DashboardPage";
+import DashboardPage from "@/features/dashboard/pages/Dashboard/DashboardPage";
 import MainLayout from "@/features/ecommerce/layouts/MainLayout";
 import { CartPage } from "@/features/ecommerce/pages/Cart/CartPage";
 import { OrdersPage } from "@/features/ecommerce/pages/Orders/OrdersPage";
