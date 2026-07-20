@@ -22,4 +22,10 @@ export const productsApi = {
     const response = await axiosInstance.get(`/Product/getproductbyid/${id}`);
     return response.data;
   },
+  deleteProduct: async (
+    id: string,
+  ): Promise<{ statusCode: number; message: string }> => {
+    const response = await axiosInstance.delete(`/Product/deleteproduct/${id}`);
+    return response.data;
+  },
 };
