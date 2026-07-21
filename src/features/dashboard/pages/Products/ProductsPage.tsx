@@ -6,14 +6,31 @@ import { Button } from "@/shared/components/ui/button";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Pencil, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { ConfirmDialog } from "../../components/ConfirmDialog";
 import { DataTable } from "../../components/DataTable";
+import { useDeleteProduct } from "../../hooks/useDeleteProduct";
 
 export const ProductsPage = () => {
   const user = useAppSelector((state) => state.auth.user);
   const [page, setPage] = useState(1);
   const pageSize = 10;
   const { data, isLoading } = useGetProducts(user?.id || "", page, pageSize);
-
+  const products = data?.data.items.filter((p) => !p.isDeleted);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { mutate } = useDeleteProduct();
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(
+    null,
+  );
+  const handleDeleteProduct = () => {
+    if (selectedProductId) {
+      mutate(selectedProductId, {
+        onSuccess: () => {
+          setIsDialogOpen(false);
+          setSelectedProductId(null);
+        },
+      });
+    }
+  };
   const columns: ColumnDef<Product>[] = [
     {
       accessorKey: "name",
@@ -119,7 +136,10 @@ export const ProductsPage = () => {
               <Pencil size={16} />
             </button>
             <button
-              onClick={() => console.log("Delete product:", product.id)}
+              onClick={() => {
+                setSelectedProductId(product.id);
+                setIsDialogOpen(true);
+              }}
               className="hover:text-rose-600 p-1 transition-colors"
               title="Delete"
             >
@@ -150,13 +170,21 @@ export const ProductsPage = () => {
       ) : (
         <DataTable
           columns={columns}
-          data={data?.data?.items || []}
+          data={products || []}
           pageCount={data?.data?.totalPages || 1}
           pageIndex={page - 1}
           pageSize={pageSize}
           onPageChange={(newPage) => setPage(newPage)}
         />
       )}
+      <ConfirmDialog
+        title="Confirm Deletion"
+        description="Are you sure you want to delete this product?"
+        onConfirm={() => handleDeleteProduct()}
+        onCancel={() => setIsDialogOpen(false)}
+        isOpen={isDialogOpen}
+        setIsOpen={setIsDialogOpen}
+      />
     </>
   );
 };
