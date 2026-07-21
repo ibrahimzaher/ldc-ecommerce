@@ -1,5 +1,10 @@
 import { axiosInstance } from "@/core/config/axiosInstance";
-import type { Product, ProductsResponse } from "../types/product.types";
+import type {
+  CreateProductRequest,
+  CreateProductResponse,
+  Product,
+  ProductsResponse,
+} from "../types/product.types";
 
 export const productsApi = {
   getProducts: async ({
@@ -26,6 +31,15 @@ export const productsApi = {
     id: string,
   ): Promise<{ statusCode: number; message: string }> => {
     const response = await axiosInstance.delete(`/Product/deleteproduct/${id}`);
+    return response.data;
+  },
+  addProduct: async (
+    productData: CreateProductRequest,
+  ): Promise<CreateProductResponse> => {
+    const response = await axiosInstance.post(
+      `/Product/addproduct`,
+      productData,
+    );
     return response.data;
   },
 };

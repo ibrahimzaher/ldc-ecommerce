@@ -26,3 +26,17 @@ export interface ProductsResponse {
   statusCode: number;
   message: string;
 }
+
+export interface CreateProductRequest {
+  name: string;
+  description: string;
+  amount: number;
+  type: string;
+  stockQuantity: number;
+  status: string;
+  productImages: ProductImage[];
+}
+export interface CreateProductResponse {
+  statusCode: number;
+  message: string;
+}
