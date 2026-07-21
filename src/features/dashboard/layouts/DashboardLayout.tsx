@@ -37,7 +37,7 @@ export default function DashboardLayout() {
               </div>
             </NavLink>
 
-            <NavLink to="/dashboard/products" className={getNavLinkClass}>
+            <NavLink to="/dashboard/productList" className={getNavLinkClass}>
               <div className="flex items-center gap-3">
                 <ShoppingBag className="w-5 h-5" />
                 <span className="hidden lg:inline">Products</span>
