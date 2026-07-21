@@ -1,7 +1,20 @@
+import type { ProductRequest } from "@/features/ecommerce/types/product.types";
+import { ProductForm } from "../../components/ProductFrom";
+import { useAddProduct } from "../../hooks/useAddProduct";
+import { useNavigate } from "react-router-dom";
+
 export const AddProductPage = () => {
+  const navigate = useNavigate();
+  const { mutate, isPending } = useAddProduct();
+  const handelSubmit = (data: ProductRequest) => {
+    mutate(data);
+    navigate("/dashboard/productList");
+  };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold mb-6">Add Product</h1>
-    </div>
+    <ProductForm
+      isPending={isPending}
+      onSubmit={handelSubmit}
+      title="General Information"
+    />
   );
 };

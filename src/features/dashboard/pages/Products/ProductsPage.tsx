@@ -131,7 +131,7 @@ export const ProductsPage = () => {
         return (
           <div className="flex justify-center gap-2 text-slate-400">
             <button
-              onClick={() => console.log("Edit product:", product.id)}
+              onClick={() => navigate(`/dashboard/productList/${product.id}`)}
               className="hover:text-amber-600 p-1 transition-colors"
               title="Edit"
             >

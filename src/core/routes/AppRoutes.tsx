@@ -5,6 +5,7 @@ import RegisterPage from "@/features/auth/pages/RegisterPage";
 import DashboardLayout from "@/features/dashboard/layouts/DashboardLayout";
 import DashboardPage from "@/features/dashboard/pages/Dashboard/DashboardPage";
 import { AddProductPage } from "@/features/dashboard/pages/Products/AddProductPage";
+import { EditProductPage } from "@/features/dashboard/pages/Products/EditProductPage";
 import { ProductsPage } from "@/features/dashboard/pages/Products/ProductsPage";
 import MainLayout from "@/features/ecommerce/layouts/MainLayout";
 import { CartPage } from "@/features/ecommerce/pages/Cart/CartPage";
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard/productList/addProduct",
             element: <AddProductPage />,
+          },
+          {
+            path: "/dashboard/productList/:id",
+            element: <EditProductPage />,
           },
         ],
       },
