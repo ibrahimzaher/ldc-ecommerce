@@ -9,10 +9,12 @@ import { useState } from "react";
 import { ConfirmDialog } from "../../components/ConfirmDialog";
 import { DataTable } from "../../components/DataTable";
 import { useDeleteProduct } from "../../hooks/useDeleteProduct";
+import { useNavigate } from "react-router";
 
 export const ProductsPage = () => {
   const user = useAppSelector((state) => state.auth.user);
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
   const pageSize = 10;
   const { data, isLoading } = useGetProducts(user?.id || "", page, pageSize);
   const products = data?.data.items.filter((p) => !p.isDeleted);
@@ -158,7 +160,10 @@ export const ProductsPage = () => {
           Products
         </h1>
 
-        <Button>
+        <Button
+          onClick={() => navigate("/dashboard/productList/addProduct")}
+          variant="default"
+        >
           <Plus size={18} /> Add Product
         </Button>
       </div>
