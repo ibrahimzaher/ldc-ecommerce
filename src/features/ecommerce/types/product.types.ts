@@ -27,7 +27,7 @@ export interface ProductsResponse {
   message: string;
 }
 
-export interface CreateProductRequest {
+export interface ProductRequest {
   name: string;
   description: string;
   amount: number;
@@ -36,7 +36,7 @@ export interface CreateProductRequest {
   status: string;
   productImages: ProductImage[];
 }
-export interface CreateProductResponse {
+export interface ProductResponse {
   statusCode: number;
   message: string;
 }

@@ -1,4 +1,4 @@
-import type { CreateProductRequest } from "@/features/ecommerce/types/product.types";
+import type { ProductRequest } from "@/features/ecommerce/types/product.types";
 import CustomInput from "@/shared/components/ui/CustomInput";
 import { Button } from "@/shared/components/ui/button";
 import { useFormik } from "formik";
@@ -32,14 +32,14 @@ const validationSchema = Yup.object({
 });
 
 interface ProductFormProps {
-  initialValues?: CreateProductRequest;
-  onSubmit: (values: CreateProductRequest) => void;
+  initialValues?: ProductRequest;
+  onSubmit: (values: ProductRequest) => void;
   isPending: boolean;
   submitButtonText?: string;
   title?: string;
 }
 
-const defaultInitialValues: CreateProductRequest = {
+const defaultInitialValues: ProductRequest = {
   name: "",
   description: "",
   amount: 0,
@@ -58,7 +58,7 @@ export const ProductForm = ({
 }: ProductFormProps) => {
   const [isUploading, setIsUploading] = useState(false);
 
-  const formik = useFormik<CreateProductRequest>({
+  const formik = useFormik<ProductRequest>({
     initialValues,
     enableReinitialize: true,
     validationSchema,
