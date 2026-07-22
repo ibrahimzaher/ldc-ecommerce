@@ -113,8 +113,9 @@ export function DataTable<TData, TValue>({
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-        <div className="block overflow-x-auto">
+      <div className="bg-white rounded-2xl border  border-slate-200 overflow-hidden shadow-sm">
+        <div className="block overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
+          {" "}
           <table className="w-full text-left border-collapse text-sm">
             <thead>
               {table.getHeaderGroups().map((headerGroup) => (

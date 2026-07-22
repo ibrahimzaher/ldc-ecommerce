@@ -3,6 +3,7 @@ import PublicRoute from "@/core/guards/PublicRoute";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import DashboardLayout from "@/features/dashboard/layouts/DashboardLayout";
+import { CustomersPage } from "@/features/dashboard/pages/Customers/CustomersPage";
 import DashboardPage from "@/features/dashboard/pages/Dashboard/DashboardPage";
 import { AddProductPage } from "@/features/dashboard/pages/Products/AddProductPage";
 import { EditProductPage } from "@/features/dashboard/pages/Products/EditProductPage";
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard/productList/:id",
             element: <EditProductPage />,
+          },
+          {
+            path: "/dashboard/customers",
+            element: <CustomersPage />,
           },
         ],
       },
