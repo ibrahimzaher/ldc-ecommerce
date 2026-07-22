@@ -5,6 +5,7 @@ import RegisterPage from "@/features/auth/pages/RegisterPage";
 import DashboardLayout from "@/features/dashboard/layouts/DashboardLayout";
 import { CustomersPage } from "@/features/dashboard/pages/Customers/CustomersPage";
 import DashboardPage from "@/features/dashboard/pages/Dashboard/DashboardPage";
+import { OrdersDashboardPage } from "@/features/dashboard/pages/Orders/OrdersDashboardPage";
 import { AddProductPage } from "@/features/dashboard/pages/Products/AddProductPage";
 import { EditProductPage } from "@/features/dashboard/pages/Products/EditProductPage";
 import { ProductsPage } from "@/features/dashboard/pages/Products/ProductsPage";
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard/customers",
             element: <CustomersPage />,
+          },
+          {
+            path: "/dashboard/orders",
+            element: <OrdersDashboardPage />,
           },
         ],
       },

@@ -1,4 +1,4 @@
-import type { OrderResponse } from "@/features/ecommerce/types/orders.types";
+import type { Order } from "@/features/ecommerce/types/orders.types";
 import {
   AccordionContent,
   AccordionItem,
@@ -7,7 +7,7 @@ import {
 import { Calendar, DollarSign } from "lucide-react";
 
 interface OrderAccordionItemProps {
-  order: OrderResponse;
+  order: Order;
 }
 
 export const OrderAccordionItem = ({ order }: OrderAccordionItemProps) => {
