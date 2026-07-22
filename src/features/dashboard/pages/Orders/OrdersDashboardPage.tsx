@@ -1,18 +1,25 @@
-import { useState } from "react";
-import { useGetAllOrders } from "../../hooks/useGetAllOrders";
-import { DataTable } from "../../components/DataTable";
+import type { Order } from "@/features/ecommerce/types/orders.types";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Trash2 } from "lucide-react";
-import type { Order } from "@/features/ecommerce/types/orders.types";
+import { useState } from "react";
+import { ConfirmDialog } from "../../components/ConfirmDialog";
+import { DataTable } from "../../components/DataTable";
+import { useDeleteOrder } from "../../hooks/useDeleteOrder";
+import { useGetAllOrders } from "../../hooks/useGetAllOrders";
 
 export const OrdersDashboardPage = () => {
   const [page, setPage] = useState(1);
   const pageSize = 10;
 
+  const [open, setOpen] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+
   const { data, isLoading, isError } = useGetAllOrders({
     pageNumber: page,
     pageSize,
   });
+
+  const { mutate: deleteOrder } = useDeleteOrder();
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
@@ -106,11 +113,15 @@ export const OrdersDashboardPage = () => {
     {
       id: "actions",
       header: () => <div className="text-center">Actions</div>,
-      cell: () => {
+      cell: ({ row }) => {
+        const order = row.original;
         return (
           <div className="flex justify-center gap-2 text-slate-400">
             <button
-              onClick={() => {}}
+              onClick={() => {
+                setSelectedOrder(order);
+                setOpen(true);
+              }}
               className="hover:text-rose-600 p-1 transition-colors cursor-pointer"
               title="Delete"
             >
@@ -142,7 +153,7 @@ export const OrdersDashboardPage = () => {
     <>
       <div className="flex flex-col sm:flex-row mb-5 sm:items-center justify-between gap-4">
         <h1 className="text-2xl font-bold text-slate-800 tracking-tight">
-          Orders Dashboard
+          Orders
         </h1>
       </div>
 
@@ -153,6 +164,28 @@ export const OrdersDashboardPage = () => {
         pageIndex={page - 1}
         pageSize={pageSize}
         onPageChange={handlePageChange}
+      />
+
+      <ConfirmDialog
+        isOpen={open}
+        onCancel={() => {
+          setOpen(false);
+          setSelectedOrder(null);
+        }}
+        onConfirm={() => {
+          if (selectedOrder) {
+            deleteOrder(selectedOrder.id, {
+              onSuccess: () => {
+                setOpen(false);
+                setSelectedOrder(null);
+              },
+            });
+          }
+        }}
+        setIsOpen={setOpen}
+        key={"Delete Order"}
+        description="Are you sure you want to delete this order? This action cannot be undone."
+        title="Delete Order"
       />
     </>
   );
