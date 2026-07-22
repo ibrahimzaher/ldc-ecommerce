@@ -15,3 +15,15 @@ export interface AuthResponse {
   statusCode: number;
   message: string;
 }
+
+export interface GetAllCustomersResponse {
+  data: {
+    items: User[];
+    totalCount: number;
+    totalPages: number;
+    currentPage: number;
+    pageSize: number;
+  };
+  statusCode: number;
+  message: string;
+}
