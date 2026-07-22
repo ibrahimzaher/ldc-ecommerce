@@ -32,4 +32,12 @@ export const OrdersApi = {
     );
     return response.data;
   },
+  deleteOrder: async (
+    orderId: string,
+  ): Promise<{ statusCode: number; message: string }> => {
+    const response = await axiosInstance.delete(
+      `/Order/deleteorder/${orderId}`,
+    );
+    return response.data;
+  },
 };
