@@ -2,7 +2,7 @@ import { axiosInstance } from "@/core/config/axiosInstance";
 import type {
   OrderRequest,
   OrderResponse,
-  OrdersResponse,
+  OrdersApiResponse,
 } from "../types/orders.types";
 
 export const OrdersApi = {
@@ -14,9 +14,21 @@ export const OrdersApi = {
     customerId: string,
     pageNumber: number = 1,
     pageSize: number = 10,
-  ): Promise<OrdersResponse> => {
+  ): Promise<OrdersApiResponse> => {
     const response = await axiosInstance.get(
       `/Order/getallorders/${customerId}?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+    );
+    return response.data;
+  },
+  getAllOrders: async ({
+    pageNumber = 1,
+    pageSize = 10,
+  }: {
+    pageNumber?: number;
+    pageSize?: number;
+  }): Promise<OrdersApiResponse> => {
+    const response = await axiosInstance.get(
+      `/Order/getallorders?pageNumber=${pageNumber}&pageSize=${pageSize}`,
     );
     return response.data;
   },
