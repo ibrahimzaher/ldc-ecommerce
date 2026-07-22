@@ -5,6 +5,8 @@ import type { User } from "@/features/auth/types/authResponse";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
+import { useDeleteCustomer } from "../../hooks/useDeleteCustomer";
+import { ConfirmDialog } from "../../components/ConfirmDialog";
 
 export const CustomersPage = () => {
   const [page, setPage] = useState(1);
@@ -13,6 +15,9 @@ export const CustomersPage = () => {
     pageNumber: page,
     pageSize,
   });
+  const { mutate: deleteCustomer } = useDeleteCustomer();
+  const [open, setOpen] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState<User | null>(null);
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
   };
@@ -111,7 +116,8 @@ export const CustomersPage = () => {
             <button
               className="text-red-500 hover:underline"
               onClick={() => {
-                console.log("Delete customer", customer.id);
+                setSelectedCustomer(customer);
+                setOpen(true);
               }}
             >
               Delete
@@ -137,6 +143,23 @@ export const CustomersPage = () => {
         pageIndex={page - 1}
         onPageChange={handlePageChange}
         data={customers}
+      />
+      <ConfirmDialog
+        isOpen={open}
+        onCancel={() => {
+          setOpen(false);
+          setSelectedCustomer(null);
+        }}
+        onConfirm={() => {
+          if (selectedCustomer) {
+            deleteCustomer(selectedCustomer.id);
+            setOpen(false);
+          }
+        }}
+        setIsOpen={setOpen}
+        key={"Delete Customer"}
+        description="Are you sure you want to delete this customer? This action cannot be undone."
+        title="Delete Customer"
       />
     </>
   );
