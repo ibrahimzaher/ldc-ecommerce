@@ -20,7 +20,7 @@ export default function DashboardLayout() {
     }`;
 
   return (
-    <div className="flex min-h-screen bg-slate-50 text-slate-700 font-sans overflow-hidden">
+    <div className="flex h-screen bg-slate-50 text-slate-700 font-sans overflow-y-auto">
       <aside className="w-16 lg:w-64 bg-white border-r border-slate-200 flex flex-col justify-between p-3 lg:p-4 shrink-0 transition-all duration-300">
         <div>
           <img
