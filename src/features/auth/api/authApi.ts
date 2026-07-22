@@ -42,4 +42,12 @@ export const authApi = {
     );
     return response.data;
   },
+  deleteCustomer: async (
+    customerId: string,
+  ): Promise<{ statusCode: number; message: string }> => {
+    const response = await axiosInstance.delete(
+      `/Customer/deleteCustomer/${customerId}`,
+    );
+    return response.data;
+  },
 };
