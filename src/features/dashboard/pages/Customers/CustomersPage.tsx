@@ -128,10 +128,19 @@ export const CustomersPage = () => {
     },
   ];
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="bg-white p-12 rounded-2xl border border-slate-200 text-center text-slate-400 text-sm">
+        Loading customers...
+      </div>
+    );
   }
+
   if (isError) {
-    return <div>Error loading customers.</div>;
+    return (
+      <div className="bg-white p-12 rounded-2xl border border-slate-200 text-center text-rose-500 text-sm">
+        Error loading customers.
+      </div>
+    );
   }
   return (
     <>
