@@ -14,7 +14,7 @@ export const OrdersDashboardPage = () => {
   const [open, setOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
-  const { data, isLoading, isError } = useGetAllOrders({
+  const { data, isLoading } = useGetAllOrders({
     pageNumber: page,
     pageSize,
   });
@@ -133,22 +133,6 @@ export const OrdersDashboardPage = () => {
     },
   ];
 
-  if (isLoading) {
-    return (
-      <div className="bg-white p-12 rounded-2xl border border-slate-200 text-center text-slate-400 text-sm">
-        Loading orders...
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="bg-white p-12 rounded-2xl border border-slate-200 text-center text-rose-500 text-sm">
-        Error loading orders.
-      </div>
-    );
-  }
-
   return (
     <>
       <div className="flex flex-col sm:flex-row mb-5 sm:items-center justify-between gap-4">
@@ -157,14 +141,20 @@ export const OrdersDashboardPage = () => {
         </h1>
       </div>
 
-      <DataTable
-        columns={columns}
-        data={orders}
-        pageCount={totalPages}
-        pageIndex={page - 1}
-        pageSize={pageSize}
-        onPageChange={handlePageChange}
-      />
+      {isLoading ? (
+        <div className="bg-white p-12 rounded-2xl border border-slate-200 text-center text-slate-400 text-sm">
+          Loading orders...
+        </div>
+      ) : (
+        <DataTable
+          columns={columns}
+          data={orders}
+          pageCount={totalPages}
+          pageIndex={page - 1}
+          pageSize={pageSize}
+          onPageChange={handlePageChange}
+        />
+      )}
 
       <ConfirmDialog
         isOpen={open}
